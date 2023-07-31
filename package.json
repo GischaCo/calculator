@@ -11,6 +11,12 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
+    "@nuxtjs/composition-api": "^0.33.1",
     "nuxt": "^2.0.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.14",
+    "postcss": "^8.4.27",
+    "tailwindcss": "^3.3.3"
   }
 }

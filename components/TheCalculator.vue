@@ -15,6 +15,6 @@
 
 <script>
 export default {
-  name: " TheCalculator",
+  name: "TheCalculator",
 };
 </script>

@@ -11,7 +11,7 @@
       <the-button>7</the-button>
       <the-button>8</the-button>
       <the-button>9</the-button>
-      <the-button purple>%</the-button>
+      <the-button purple>/</the-button>
     </div>
 
     <div class="w-full flex justify-end gap-3.5">

@@ -3,7 +3,7 @@ export const state = () => ({
 });
 
 export const mutations = {
-  toggleTheme(state, value) {
+  updateThemeMode(state, value) {
     state.theme = value;
   },
 };
@@ -15,10 +15,20 @@ export const actions = {
       !("Gischa_Calculator_Theme" in localStorage)
     ) {
       document.documentElement.classList.add("dark");
-      commit("toggleTheme", "dark");
+      commit("updateThemeMode", "dark");
     } else {
       document.documentElement.classList.remove("dark");
-      commit("toggleTheme", "light");
+      commit("updateThemeMode", "light");
+    }
+  },
+  updateThemeMode({ commit }, value) {
+    localStorage.Gischa_Calculator_Theme = value;
+    commit("updateThemeMode", value);
+
+    if (value === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
     }
   },
 };

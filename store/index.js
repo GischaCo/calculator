@@ -2,12 +2,17 @@ export const state = () => ({
   theme: "dark",
   display: "",
   history: [],
+  calculated: false,
 });
 
 export const mutations = {
   // theme setting
   updateThemeMode(state, value) {
     state.theme = value;
+  },
+  // setting
+  toggleCalculated(state) {
+    state.calculated = !state.calculated;
   },
   // display
   updateDisplay(state, value) {
@@ -46,11 +51,20 @@ export const actions = {
     }
   },
   // calculate
-  //
+  calculate({ state, commit }) {
+    const result = eval(state.display);
+    commit("updateDisplay", String(result));
+    commit("toggleCalculated");
+  },
   // display
   updateDisplay({ state, commit }, value) {
     let prevDisplay = state.display;
     const operators = ["*", "/", "+", "-", "."];
+
+    if (state.calculated) {
+      prevDisplay = "";
+      commit("toggleCalculated");
+    }
 
     if (operators.includes(value)) {
       // prevent putting an operator at first

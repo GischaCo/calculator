@@ -32,7 +32,7 @@
       <the-button @click="inputChar($event)">.</the-button>
       <the-button @click="inputChar($event)">0</the-button>
       <the-button @click="inputChar($event)">AC</the-button>
-      <the-button color="purple">=</the-button>
+      <the-button @click="result" color="purple">=</the-button>
     </div>
   </div>
 </template>
@@ -55,5 +55,8 @@ const clearAll = () => {
 const inputChar = (e) => {
   const char = e.target.innerText;
   store.dispatch("updateDisplay", char);
+};
+const result = () => {
+  store.dispatch("calculate");
 };
 </script>

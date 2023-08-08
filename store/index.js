@@ -1,14 +1,25 @@
 export const state = () => ({
   theme: "dark",
+  display: "1",
+  history: [],
 });
 
 export const mutations = {
+  // theme setting
   updateThemeMode(state, value) {
     state.theme = value;
+  },
+  // display
+  clearDisplay(state) {
+    state.display = "0";
+  },
+  clearHistory(state) {
+    state.history = [];
   },
 };
 
 export const actions = {
+  // theme setting
   checkThemeMode({ commit }) {
     if (
       localStorage.Gischa_Calculator_Theme === "dark" ||
@@ -30,5 +41,13 @@ export const actions = {
     } else {
       document.documentElement.classList.remove("dark");
     }
+  },
+  // calculate
+  // ...
+
+  // display
+  clearAll({ commit }) {
+    commit("clearDisplay");
+    commit("clearHistory");
   },
 };

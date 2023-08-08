@@ -9,7 +9,7 @@
     <the-operations></the-operations>
 
     <!-- result -->
-    <the-result></the-result>
+    <display-box></display-box>
 
     <!-- buttons -->
     <the-buttons></the-buttons>

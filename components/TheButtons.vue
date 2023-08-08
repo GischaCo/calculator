@@ -1,7 +1,7 @@
 <template>
   <div class="w-full flex flex-col gap-3.5">
     <div class="w-full flex justify-end gap-3.5">
-      <the-button color="orange">C</the-button>
+      <the-button color="orange" @click="clearAll">C</the-button>
       <the-button orange>(</the-button>
       <the-button orange>)</the-button>
       <the-button purple>*</the-button>
@@ -40,5 +40,16 @@
 <script>
 export default {
   name: "TheButtons",
+};
+</script>
+
+<script setup>
+import { useStore } from "@nuxtjs/composition-api";
+// variables
+const store = useStore();
+
+// methods
+const clearAll = () => {
+  store.dispatch("clearAll");
 };
 </script>

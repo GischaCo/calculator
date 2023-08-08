@@ -1,7 +1,7 @@
 export const state = () => ({
   theme: "dark",
-  display: "0",
-  history: ["(2*4) + 356", "364/2"],
+  display: "",
+  history: [],
 });
 
 export const mutations = {
@@ -10,8 +10,11 @@ export const mutations = {
     state.theme = value;
   },
   // display
+  updateDisplay(state, value) {
+    state.display = value;
+  },
   clearDisplay(state) {
-    state.display = "0";
+    state.display = "";
   },
   clearHistory(state) {
     state.history = [];
@@ -43,9 +46,27 @@ export const actions = {
     }
   },
   // calculate
-  // ...
-
+  //
   // display
+  updateDisplay({ state, commit }, value) {
+    let prevDisplay = state.display;
+    const operators = ["*", "/", "+", "-", "."];
+
+    if (operators.includes(value)) {
+      // prevent putting an operator at first
+      if (!prevDisplay.length) {
+        prevDisplay = "0";
+      }
+      // prevent putting multiple operator after each other
+      else if (operators.includes(prevDisplay[prevDisplay.length - 1])) {
+        prevDisplay = prevDisplay.slice(0, -1);
+      }
+    }
+
+    // update display
+    const newDisplay = `${prevDisplay}${value}`;
+    commit("updateDisplay", newDisplay);
+  },
   clearAll({ commit }) {
     commit("clearDisplay");
     commit("clearHistory");

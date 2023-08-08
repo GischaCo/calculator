@@ -1,37 +1,37 @@
 <template>
   <div class="w-full flex flex-col gap-3.5">
     <div class="w-full flex justify-end gap-3.5">
-      <the-button color="orange" @click="clearAll">C</the-button>
-      <the-button orange>(</the-button>
-      <the-button orange>)</the-button>
-      <the-button purple>*</the-button>
+      <the-button @click="clearAll" color="orange">C</the-button>
+      <the-button @click="inputChar($event)" orange>(</the-button>
+      <the-button @click="inputChar($event)" orange>)</the-button>
+      <the-button @click="inputChar($event)" purple>*</the-button>
     </div>
 
     <div class="w-full flex justify-end gap-3.5">
-      <the-button>7</the-button>
-      <the-button>8</the-button>
-      <the-button>9</the-button>
-      <the-button purple>/</the-button>
+      <the-button @click="inputChar($event)">7</the-button>
+      <the-button @click="inputChar($event)">8</the-button>
+      <the-button @click="inputChar($event)">9</the-button>
+      <the-button @click="inputChar($event)" purple>/</the-button>
     </div>
 
     <div class="w-full flex justify-end gap-3.5">
-      <the-button>4</the-button>
-      <the-button>5</the-button>
-      <the-button>6</the-button>
-      <the-button purple>-</the-button>
+      <the-button @click="inputChar($event)">4</the-button>
+      <the-button @click="inputChar($event)">5</the-button>
+      <the-button @click="inputChar($event)">6</the-button>
+      <the-button @click="inputChar($event)" purple>-</the-button>
     </div>
 
     <div class="w-full flex justify-end gap-3.5">
-      <the-button>1</the-button>
-      <the-button>2</the-button>
-      <the-button>3</the-button>
-      <the-button purple>+</the-button>
+      <the-button @click="inputChar($event)">1</the-button>
+      <the-button @click="inputChar($event)">2</the-button>
+      <the-button @click="inputChar($event)">3</the-button>
+      <the-button @click="inputChar($event)" purple>+</the-button>
     </div>
 
     <div class="w-full flex justify-end gap-3.5">
-      <the-button>.</the-button>
-      <the-button>0</the-button>
-      <the-button>AC</the-button>
+      <the-button @click="inputChar($event)">.</the-button>
+      <the-button @click="inputChar($event)">0</the-button>
+      <the-button @click="inputChar($event)">AC</the-button>
       <the-button color="purple">=</the-button>
     </div>
   </div>
@@ -51,5 +51,9 @@ const store = useStore();
 // methods
 const clearAll = () => {
   store.dispatch("clearAll");
+};
+const inputChar = (e) => {
+  const char = e.target.innerText;
+  store.dispatch("updateDisplay", char);
 };
 </script>

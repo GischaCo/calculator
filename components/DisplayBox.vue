@@ -2,7 +2,7 @@
   <p
     class="w-full font-bold text-zinc-600 dark:text-zinc-400 text-5xl tracking-wide text-end"
   >
-    {{ store.state.display }}
+    {{ store.state.display.length ? store.state.display : "0" }}
   </p>
 </template>
 

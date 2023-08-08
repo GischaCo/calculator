@@ -1,7 +1,7 @@
 export const state = () => ({
   theme: "dark",
-  display: "1",
-  history: [],
+  display: "0",
+  history: ["(2*4) + 356", "364/2"],
 });
 
 export const mutations = {
@@ -49,5 +49,11 @@ export const actions = {
   clearAll({ commit }) {
     commit("clearDisplay");
     commit("clearHistory");
+  },
+};
+
+export const getters = {
+  history(state) {
+    return state.history;
   },
 };

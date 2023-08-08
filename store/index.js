@@ -21,6 +21,9 @@ export const mutations = {
   clearDisplay(state) {
     state.display = "";
   },
+  updateHistory(state, value) {
+    state.history.push(value);
+  },
   clearHistory(state) {
     state.history = [];
   },
@@ -52,6 +55,8 @@ export const actions = {
   },
   // calculate
   calculate({ state, commit }) {
+    commit("updateHistory", state.display);
+
     const result = eval(state.display);
     commit("updateDisplay", String(result));
     commit("toggleCalculated");
@@ -62,8 +67,13 @@ export const actions = {
     const operators = ["*", "/", "+", "-", "."];
 
     if (state.calculated) {
-      prevDisplay = "";
-      commit("toggleCalculated");
+      if (!operators.includes(value)) {
+        prevDisplay = "";
+        commit("toggleCalculated");
+        commit("clearHistory");
+      } else {
+        commit("toggleCalculated");
+      }
     }
 
     if (operators.includes(value)) {

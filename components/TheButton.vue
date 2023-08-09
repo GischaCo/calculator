@@ -41,6 +41,7 @@ const store = useStore();
 
 // computed
 const overlayStyle = computed(() => {
+  // the buttons those have an orange or purple low-opacity overlay
   const style = {
     orange:
       "relative before:content-[''] before:absolute before:top-0 before:left-0 before:rounded-full before:w-full before:h-full before:bg-yellow-700/20",
@@ -50,7 +51,9 @@ const overlayStyle = computed(() => {
 
   return props.orange ? style.orange : props.purple ? style.purple : "";
 });
+
 const solidColor = computed(() => {
+  // the buttons those have completely a solid color inc. orange or purple
   const style = {
     orange: "text-white dark:text-zinc-300 bg-yellow-600",
     purple: "text-white dark:text-zinc-300 bg-purple-800",
@@ -59,6 +62,7 @@ const solidColor = computed(() => {
 
   return style[props.color];
 });
+
 const themeMode = computed(() => {
   return `${store.state.theme}-mode`;
 });

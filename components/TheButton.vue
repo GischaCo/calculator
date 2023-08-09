@@ -2,7 +2,7 @@
   <button
     v-on="$listeners"
     :class="[overlayStyle, solidColor, themeMode]"
-    class="w-16 h-14 rounded-full focus:outline-none overflow-hidden"
+    class="w-16 h-14 rounded-full focus:outline-none flex items-center justify-center overflow-hidden"
   >
     <slot></slot>
   </button>

@@ -31,7 +31,13 @@
     <div class="w-full flex justify-end gap-3.5">
       <the-button @click="inputChar($event)">.</the-button>
       <the-button @click="inputChar($event)">0</the-button>
-      <the-button @click="inputChar($event)">AC</the-button>
+      <the-button @click="clearOne">
+        <img
+          class="w-6 fill-red-200"
+          src="../assets/svg/delete-left-solid.svg"
+          alt="Delete"
+        />
+      </the-button>
       <the-button @click="result" color="purple">=</the-button>
     </div>
   </div>
@@ -49,6 +55,9 @@ import { useStore } from "@nuxtjs/composition-api";
 const store = useStore();
 
 // methods
+const clearOne = () => {
+  store.dispatch("clearOne");
+};
 const clearAll = () => {
   store.dispatch("clearAll");
 };

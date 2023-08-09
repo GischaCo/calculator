@@ -55,6 +55,12 @@ export const actions = {
   },
   // calculate
   calculate({ state, commit }) {
+    const operators = ["*", "/", "+", "-", "."];
+    const displayLastIndex = state.display[state.display.length - 1];
+    if (operators.includes(displayLastIndex)) {
+      commit("updateDisplay", state.display.slice(0, -1));
+    }
+
     commit("updateHistory", state.display);
 
     const result = eval(state.display);
@@ -89,6 +95,12 @@ export const actions = {
 
     // update display
     const newDisplay = `${prevDisplay}${value}`;
+    commit("updateDisplay", newDisplay);
+  },
+  clearOne({ state, commit }) {
+    const prevDisplay = state.display;
+    const newDisplay = prevDisplay.slice(0, -1);
+
     commit("updateDisplay", newDisplay);
   },
   clearAll({ commit }) {
